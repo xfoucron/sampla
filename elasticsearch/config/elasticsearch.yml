@@ -1,0 +1,11 @@
+cluster.name: "sampla"
+
+discovery.type: single-node
+
+bootstrap.memory_lock: true
+
+network.host: 0.0.0.0
+
+xpack:
+  license.self_generated.type: trial
+  security.enabled: true
