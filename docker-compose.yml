@@ -1,6 +1,22 @@
 version: '3'
 
 services:
+  varnish:
+    image: varnish
+    container_name: varnish
+    tmpfs: /var/lib/varnish:exec
+    volumes:
+      - ./varnish/default.vcl:/etc/varnish/default.vcl:ro
+    ports:
+      - "80:80"
+    depends_on:
+      nginx:
+        condition: service_started
+
+  nginx:
+    image: nginx
+    container_name: nginx
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.11.2
     container_name: elasticsearch
